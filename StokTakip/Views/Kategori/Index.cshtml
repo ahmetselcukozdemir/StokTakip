@@ -1,0 +1,30 @@
+﻿@using StokTakip.Models.Entity
+@model List<Kategoriler>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Kategori Adı</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in Model)
+        {
+            <tr>
+                <th scope="row">@category.kategoriID</th>
+                <td>@category.kategoriAd</td>
+
+
+            </tr>
+        }
+      
+       
+      
+    </tbody>
+</table>
