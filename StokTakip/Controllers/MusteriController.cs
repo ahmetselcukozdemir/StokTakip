@@ -40,5 +40,20 @@ namespace StokTakip.Controllers
 
 
         }
+       public ActionResult MusteriGetir(int id)
+        {
+            var customer = db.Musteriler.Find(id);
+            return View("MusteriGetir",customer);
+
+        }
+        public ActionResult Guncelle(Musteriler customer)
+        {
+            var m = db.Musteriler.Find(customer.musteriID);
+            m.musteriAd = customer.musteriAd;
+            m.musteriSoyad = customer.musteriSoyad;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
     }
 }

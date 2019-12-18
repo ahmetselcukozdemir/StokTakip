@@ -1,0 +1,63 @@
+﻿@model StokTakip.Models.Entity.Musteriler
+@{
+    ViewBag.Title = "MusteriGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<style>
+    .form-content {
+        padding: 5%;
+        border: 1px solid #ced4da;
+        margin-bottom: 2%;
+    }
+
+    .form-control {
+        border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+        border: none;
+        border-radius: 1.5rem;
+        padding: 1%;
+        width: 20%;
+        cursor: pointer;
+        background: #0062cc;
+        color: #fff;
+    }
+</style>
+
+
+@using (Html.BeginForm("Guncelle", "Musteri", FormMethod.Post))
+{
+
+    <h2>Müşteri Güncelle</h2>
+
+    <div class="register-form">
+        <div class="form">
+
+            <div class="form-content">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label>Müşteri ID :</label>
+                            @Html.TextBoxFor(m => m.musteriID, new { @class = "form-control" })
+
+                            <label>Müşteri Adı :</label>
+                            @Html.TextBoxFor(m => m.musteriAd, new { @class = "form-control" })
+
+                            <label>Müşteri Soyadı :</label>
+                            @Html.TextBoxFor(m => m.musteriSoyad, new { @class = "form-control" })
+
+                           
+                        </div>
+
+                    </div>
+
+                </div>
+                <button class="btnSubmit"> Güncelle</button>
+                <a href="/Musteri/Index/" class="btnSubmit" style="background-color:red;">Geri Dön</a>
+            </div>
+        </div>
+    </div>
+
+}

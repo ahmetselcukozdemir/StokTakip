@@ -1969,6 +1969,8 @@
     <Content Include="Views\Kategori\YeniKategori.cshtml" />
     <Content Include="Views\Musteri\YeniMusteri.cshtml" />
     <Content Include="Views\Urun\UrunEkle.cshtml" />
+    <Content Include="Views\Kategori\KategoriGetir.cshtml" />
+    <Content Include="Views\Musteri\MusteriGetir.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

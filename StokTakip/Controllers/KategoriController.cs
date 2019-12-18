@@ -41,5 +41,19 @@ namespace StokTakip.Controllers
             return RedirectToAction("Index");
 
         }
+        public ActionResult KategoriGetir(int id)
+        {
+            var category = db.Kategoriler.Find(id);
+            return View("KategoriGetir", category);
+
+        }
+        public ActionResult Guncelle(Kategoriler category)
+        {
+            var ktg = db.Kategoriler.Find(category.kategoriID);
+            ktg.kategoriAd = category.kategoriAd;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
     }
 }
