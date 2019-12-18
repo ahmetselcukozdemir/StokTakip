@@ -35,5 +35,14 @@ namespace StokTakip.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult Sil(int id)
+        {
+            var product = db.Urunler.Find(id);
+            db.Urunler.Remove(product);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
     }
 }

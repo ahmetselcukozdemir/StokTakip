@@ -7,7 +7,7 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-
+<a style="margin-bottom:20px;" href="/Urun/UrunEkle/" class="btn btn-primary">Yeni Ürün Ekle</a>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -29,7 +29,7 @@
                 <th scope="row">@product.urunID</th>
                 <td>@product.urunAd</td>
                 <td>@product.urunMarka</td>
-                <td>@product.urunKategori</td>
+                <td>@product.Kategoriler.kategoriAd</td>
                 <td>@product.urunFiyat <strong>₺</strong> </td>
                 <td>@product.urunStok</td>
                 <td><a href="/Urun//Sil/@product.urunID" class="btn btn-danger">Sil</a></td>
@@ -42,4 +42,3 @@
 
     </tbody>
 </table>
-<a href="/Urun/UrunEkle/" class="btn btn-primary">Yeni Ürün Ekle</a>

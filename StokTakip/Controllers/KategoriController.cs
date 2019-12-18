@@ -32,5 +32,14 @@ namespace StokTakip.Controllers
             db.SaveChanges();
             return View();
         }
+
+        public ActionResult Sil(int id)
+        {
+            var category = db.Kategoriler.Find(id);
+            db.Kategoriler.Remove(category);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
     }
 }

@@ -7,7 +7,7 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-
+<a style="margin-bottom:20px;" href="/Musteri/YeniMusteri/" class="btn btn-primary">Yeni Müşteri Ekle</a>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -26,8 +26,8 @@
                 <th scope="row">@customer.musteriID</th>
                 <td>@customer.musteriAd</td>
                 <td>@customer.musteriSoyad</td>
-                <td><a href="/Urun/Sil/@customer.musteriID" class="btn btn-danger">Sil</a></td>
-                <td><a href="/Urun/Guncelle/@customer.musteriID" class="btn btn-success">Güncelle</a></td>
+                <td><a href="/Musteri/Sil/@customer.musteriID" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Musteri/Guncelle/@customer.musteriID" class="btn btn-success">Güncelle</a></td>
             </tr>
         }
 
@@ -36,4 +36,3 @@
     </tbody>
 </table>
 
-<a href="/Musteri/YeniMusteri/" class="btn btn-primary">Yeni Müşteri Ekle</a>

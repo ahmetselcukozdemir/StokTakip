@@ -29,7 +29,16 @@ namespace StokTakip.Controllers
         {
             db.Musteriler.Add(customer);
             db.SaveChanges();
-            return View();
+            return RedirectToAction("Index");
+        }
+        public ActionResult Sil(int id)
+        {
+            var customer = db.Musteriler.Find(id);
+            db.Musteriler.Remove(customer);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
+
         }
     }
 }
