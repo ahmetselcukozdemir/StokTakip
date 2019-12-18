@@ -1,0 +1,73 @@
+﻿@model  StokTakip.Models.Entity.Urunler
+@{
+    ViewBag.Title = "UrunEkle";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Ürün Ekle</h2>
+
+
+<style>
+    .form-content {
+        padding: 5%;
+        border: 1px solid #ced4da;
+        margin-bottom: 2%;
+    }
+
+    .form-control {
+        border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+        border: none;
+        border-radius: 1.5rem;
+        padding: 1%;
+        width: 20%;
+        cursor: pointer;
+        background: #0062cc;
+        color: #fff;
+    }
+</style>
+
+
+<form method="post">
+    <div class="register-form">
+        <div class="form">
+
+            <div class="form-content">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label>Ürün Adı :</label>
+                            <input type="text" class="form-control" name="urunAd" />
+                        </div>
+                        <div class="form-group">
+                            <label>Ürün Marka :</label>
+                            <input type="text" class="form-control" name="urunMarka" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Ürün Kategori :</label>
+                          @Html.DropDownListFor(m =>m.Kategoriler.kategoriID, ViewBag.basetype as IEnumerable<SelectListItem>,new { @class="form-control"})
+                        </div>
+                        <div class="form-group">
+                            <label>Ürün Fiyat :</label>
+                            <input type="text" class="form-control" name="urunFiyat" />
+                        </div>
+                        <div class="form-group">
+                            <label>Ürün Stok :</label>
+                            <input type="text" class="form-control" name="urunStok" />
+                         
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button class="btnSubmit">Ürün Ekle</button>
+
+            </div>
+        </div>
+    </div>
+</form>
+

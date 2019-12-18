@@ -1967,6 +1967,8 @@
     <Content Include="Views\Urun\Index.cshtml" />
     <Content Include="Views\Musteri\Index.cshtml" />
     <Content Include="Views\Kategori\YeniKategori.cshtml" />
+    <Content Include="Views\Musteri\YeniMusteri.cshtml" />
+    <Content Include="Views\Urun\UrunEkle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

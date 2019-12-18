@@ -17,5 +17,19 @@ namespace StokTakip.Controllers
 
             return View(values);
         }
+
+        [HttpGet]
+        public ActionResult YeniMusteri()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult YeniMusteri(Musteriler customer)
+        {
+            db.Musteriler.Add(customer);
+            db.SaveChanges();
+            return View();
+        }
     }
 }

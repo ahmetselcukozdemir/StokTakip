@@ -16,5 +16,24 @@ namespace StokTakip.Controllers
             var values = db.Urunler.ToList();
             return View(values);
         }
+
+        [HttpGet]
+        public ActionResult UrunEkle()
+        {
+            IEnumerable<SelectListItem> basetypes = db.Kategoriler.Select(
+      b => new SelectListItem { Value = b.kategoriID.ToString(), Text = b.kategoriAd});
+            ViewData["basetype"] = basetypes;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult UrunEkle(Urunler products)
+        {
+            var category = db.Kategoriler.Where(m => m.kategoriID == products.Kategoriler.kategoriID).FirstOrDefault();
+            products.Kategoriler = category;
+            db.Urunler.Add(products);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
