@@ -10,7 +10,8 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Kategori Adı</th>
-            
+            <th scope="col">Sil</th>
+            <th scope="col">Düzenle</th>
         </tr>
     </thead>
     <tbody>
@@ -19,8 +20,8 @@
             <tr>
                 <th scope="row">@category.kategoriID</th>
                 <td>@category.kategoriAd</td>
-
-
+                <td><a href="/Kategori/Sil/@category.kategoriID" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Kategori/Guncelle/@category.kategoriID" class="btn btn-success">Güncelle</a></td>
             </tr>
         }
       
@@ -28,3 +29,5 @@
       
     </tbody>
 </table>
+
+<a href="/Kategori/YeniKategori/" class="btn btn-primary">Yeni Kategori Ekle</a>

@@ -16,5 +16,21 @@ namespace StokTakip.Controllers
             var values = db.Kategoriler.ToList();
             return View(values);
         }
+
+        [HttpGet]
+        public ActionResult YeniKategori()
+        {
+            return View();
+
+        }
+
+        [HttpPost]
+        public ActionResult YeniKategori(Kategoriler category)
+        {
+
+            db.Kategoriler.Add(category);
+            db.SaveChanges();
+            return View();
+        }
     }
 }

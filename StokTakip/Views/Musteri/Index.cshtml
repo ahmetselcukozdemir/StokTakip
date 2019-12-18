@@ -1,0 +1,37 @@
+﻿
+@using StokTakip.Models.Entity
+@model List<Musteriler>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Adı</th>
+            <th scope="col"> Soyadı</th>
+            <th scope="col"> Sil</th>
+             <th scope="col"> Düzenle</th>
+     
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <th scope="row">@customer.musteriID</th>
+                <td>@customer.musteriAd</td>
+                <td>@customer.musteriSoyad</td>
+                <td><a href="/Urun/Sil/@customer.musteriID" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Urun/Guncelle/@customer.musteriID" class="btn btn-success">Güncelle</a></td>
+            </tr>
+        }
+
+
+
+    </tbody>
+</table>
