@@ -27,6 +27,11 @@ namespace StokTakip.Controllers
         [HttpPost]
         public ActionResult YeniMusteri(Musteriler customer)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("YeniMusteri");
+            }
+
             db.Musteriler.Add(customer);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -1,4 +1,4 @@
-﻿
+﻿@model StokTakip.Models.Entity.Kategoriler
 @{
     ViewBag.Title = "YeniKategori";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -36,7 +36,9 @@
                     <div class="col-md-8">
                         <div class="form-group">
                             <label>Kategori Adı :</label>
-                            <input type="text" class="form-control"  name="kategoriAd" />
+                            @*<input type="text" class="form-control"  name="kategoriAd" />*@
+                            @Html.TextAreaFor(m=>m.kategoriAd,new {@class="form-control" })
+                            @Html.ValidationMessageFor(m=> m.kategoriAd,"",new {@style="color:red" })
                         </div>
                       
                     </div>

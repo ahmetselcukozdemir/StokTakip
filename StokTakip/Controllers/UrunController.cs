@@ -21,7 +21,7 @@ namespace StokTakip.Controllers
         public ActionResult UrunEkle()
         {
             IEnumerable<SelectListItem> basetypes = db.Kategoriler.Select(
-      b => new SelectListItem { Value = b.kategoriID.ToString(), Text = b.kategoriAd});
+            b => new SelectListItem { Value = b.kategoriID.ToString(), Text = b.kategoriAd});
             ViewData["basetype"] = basetypes;
             return View();
         }
@@ -29,6 +29,10 @@ namespace StokTakip.Controllers
         [HttpPost]
         public ActionResult UrunEkle(Urunler products)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("UrunEkle");
+            }
             var category = db.Kategoriler.Where(m => m.kategoriID == products.Kategoriler.kategoriID).FirstOrDefault();
             products.Kategoriler = category;
             db.Urunler.Add(products);
@@ -44,5 +48,32 @@ namespace StokTakip.Controllers
             return RedirectToAction("Index");
 
         }
+        public ActionResult UrunGetir(int id)
+        {
+            var product = db.Urunler.Find(id);
+
+            IEnumerable<SelectListItem> basetypes = db.Kategoriler.Select(
+            b => new SelectListItem { Value = b.kategoriID.ToString(), Text = b.kategoriAd });
+            ViewData["basetype"] = basetypes;
+
+            return View("UrunGetir", product);
+        }
+
+        public ActionResult Guncelle(Urunler p)
+        {
+            var urun = db.Urunler.Find(p.urunID);
+            urun.urunAd = p.urunAd;
+            urun.urunMarka = p.urunMarka;
+            urun.urunStok = p.urunStok;
+            urun.urunFiyat = p.urunFiyat;
+
+            //pr.urunKategori = product.urunKategori;
+            var category = db.Kategoriler.Where(m => m.kategoriID == p.Kategoriler.kategoriID).FirstOrDefault();
+            urun.urunKategori = category.kategoriID;
+
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+       
     }
 }

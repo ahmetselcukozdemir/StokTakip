@@ -11,7 +11,8 @@ namespace StokTakip.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Urunler
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,10 +22,20 @@ namespace StokTakip.Models.Entity
         }
     
         public int urunID { get; set; }
+
+        [Required(ErrorMessage ="Bu alan boþ geçilemez.")]
         public string urunAd { get; set; }
+
+        [Required(ErrorMessage ="Bu alan boþ geçilemez.")]
         public string urunMarka { get; set; }
+
+       
         public Nullable<short> urunKategori { get; set; }
+
+        [Required(ErrorMessage = "Bu alan boþ geçilemez.")]
         public Nullable<decimal> urunFiyat { get; set; }
+
+        [Required(ErrorMessage = "Bu alan boþ geçilemez.")]
         public Nullable<byte> urunStok { get; set; }
     
         public virtual Kategoriler Kategoriler { get; set; }

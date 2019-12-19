@@ -11,7 +11,8 @@ namespace StokTakip.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Musteriler
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +22,12 @@ namespace StokTakip.Models.Entity
         }
     
         public int musteriID { get; set; }
+
+        [Required(ErrorMessage ="Bu alaný boþ býrakamazsýnýz.")]
+        [StringLength(50,ErrorMessage ="50 karakterden fazla giremezsiniz.")]
         public string musteriAd { get; set; }
+
+        [Required(ErrorMessage ="Bu alaný boþ býrakamazsýnýz.")]
         public string musteriSoyad { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -11,7 +11,8 @@ namespace StokTakip.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Kategoriler
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,8 @@ namespace StokTakip.Models.Entity
         }
     
         public short kategoriID { get; set; }
+
+        [Required(ErrorMessage ="Kategori adýný boþ býrakamazsýnýz.")] 
         public string kategoriAd { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

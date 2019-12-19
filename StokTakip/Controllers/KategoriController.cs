@@ -27,7 +27,10 @@ namespace StokTakip.Controllers
         [HttpPost]
         public ActionResult YeniKategori(Kategoriler category)
         {
-
+            if (!ModelState.IsValid)
+            {
+                return View("YeniKategori");
+            }
             db.Kategoriler.Add(category);
             db.SaveChanges();
             return View();
