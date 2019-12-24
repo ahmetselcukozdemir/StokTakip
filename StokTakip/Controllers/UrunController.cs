@@ -21,7 +21,7 @@ namespace StokTakip.Controllers
         public ActionResult UrunEkle()
         {
             IEnumerable<SelectListItem> basetypes = db.Kategoriler.Select(
-            b => new SelectListItem { Value = b.kategoriID.ToString(), Text = b.kategoriAd});
+            b => new SelectListItem { Value = b.kategoriID.ToString(), Text = b.kategoriAd });
             ViewData["basetype"] = basetypes;
             return View();
         }
@@ -43,6 +43,7 @@ namespace StokTakip.Controllers
         public ActionResult Sil(int id)
         {
             var product = db.Urunler.Find(id);
+            if(product!=null)
             db.Urunler.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -51,29 +52,41 @@ namespace StokTakip.Controllers
         public ActionResult UrunGetir(int id)
         {
             var product = db.Urunler.Find(id);
-
-            IEnumerable<SelectListItem> basetypes = db.Kategoriler.Select(
-            b => new SelectListItem { Value = b.kategoriID.ToString(), Text = b.kategoriAd });
-            ViewData["basetype"] = basetypes;
+            if (product != null)
+            {
+                IEnumerable<SelectListItem> basetypes = db.Kategoriler.Select(
+               b => new SelectListItem { Value = b.kategoriID.ToString(), Text = b.kategoriAd });
+                ViewData["basetype"] = basetypes;
+            }
 
             return View("UrunGetir", product);
         }
 
         public ActionResult Guncelle(Urunler p)
         {
-            var urun = db.Urunler.Find(p.urunID);
-            urun.urunAd = p.urunAd;
-            urun.urunMarka = p.urunMarka;
-            urun.urunStok = p.urunStok;
-            urun.urunFiyat = p.urunFiyat;
+            try
+            {
+                var urun = db.Urunler.Find(p.urunID);
+                if(urun!=null)
+                urun.urunAd = p.urunAd;
+                urun.urunMarka = p.urunMarka;
+                urun.urunStok = p.urunStok;
+                urun.urunFiyat = p.urunFiyat;
 
-            //pr.urunKategori = product.urunKategori;
-            var category = db.Kategoriler.Where(m => m.kategoriID == p.Kategoriler.kategoriID).FirstOrDefault();
-            urun.urunKategori = category.kategoriID;
+                //pr.urunKategori = product.urunKategori;
+                var category = db.Kategoriler.Where(m => m.kategoriID == p.Kategoriler.kategoriID).FirstOrDefault();
+                urun.urunKategori = category.kategoriID;
 
-            db.SaveChanges();
-            return RedirectToAction("Index");
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+
         }
-       
+
     }
 }

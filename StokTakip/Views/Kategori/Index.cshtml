@@ -1,5 +1,7 @@
 ﻿@using StokTakip.Models.Entity
-@model List<Kategoriler>
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Kategoriler>
 
 @{
     ViewBag.Title = "Index";
@@ -31,3 +33,4 @@
     </tbody>
 </table>
 
+@Html.PagedListPager((IPagedList)Model,sayfa=>Url.Action("Index",new { sayfa, @class = "form-control" }))

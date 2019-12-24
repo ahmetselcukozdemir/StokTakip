@@ -37,7 +37,7 @@
                         <div class="form-group">
                             <label>Kategori Adı :</label>
                             @*<input type="text" class="form-control"  name="kategoriAd" />*@
-                            @Html.TextAreaFor(m=>m.kategoriAd,new {@class="form-control" })
+                            @Html.TextAreaFor(m=>m.kategoriAd,new {@class="form-control",@required="", @maxlength="50" })
                             @Html.ValidationMessageFor(m=> m.kategoriAd,"",new {@style="color:red" })
                         </div>
                       

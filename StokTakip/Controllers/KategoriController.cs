@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using StokTakip.Models.Entity;
+using PagedList;
+using PagedList.Mvc;
 namespace StokTakip.Controllers
 {
     public class KategoriController : Controller
@@ -11,9 +13,10 @@ namespace StokTakip.Controllers
         // GET: Kategori
 
         MvcDbStokEntities db = new MvcDbStokEntities();
-        public ActionResult Index()
+        public ActionResult Index(int sayfa =1)
         {
-            var values = db.Kategoriler.ToList();
+            //var values = db.Kategoriler.ToList();
+            var values = db.Kategoriler.ToList().ToPagedList(sayfa, 5);
             return View(values);
         }
 
@@ -39,6 +42,7 @@ namespace StokTakip.Controllers
         public ActionResult Sil(int id)
         {
             var category = db.Kategoriler.Find(id);
+            if(category !=null)
             db.Kategoriler.Remove(category);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -46,13 +50,23 @@ namespace StokTakip.Controllers
         }
         public ActionResult KategoriGetir(int id)
         {
-            var category = db.Kategoriler.Find(id);
-            return View("KategoriGetir", category);
+            try
+            {
+                var category = db.Kategoriler.Find(id);
+                return View("KategoriGetir", category);
+            }
+            catch (Exception a)
+            {
+
+                throw a;
+            }
+         
 
         }
         public ActionResult Guncelle(Kategoriler category)
         {
             var ktg = db.Kategoriler.Find(category.kategoriID);
+            if(ktg!=null)
             ktg.kategoriAd = category.kategoriAd;
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -4,14 +4,43 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
+<style>
+    .form-content {
+        padding: 5%;
+        border: 1px solid #ced4da;
+        margin-bottom: 2%;
+    }
+
+    .form-control {
+        border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+        border: none;
+        border-radius: 1.5rem;
+        padding: 1%;
+        width: 20%;
+        cursor: pointer;
+        background: #0062cc;
+        color: #fff;
+    }
+</style>
+
 @using (Html.BeginForm("Guncelle", "Urun", FormMethod.Post))
 {
     <div class="register-form">
         <div class="form">
-
+       
             <div class="form-content">
+                <h2>Ürün Güncelle</h2>
                 <div class="row">
+                  
                     <div class="col-md-8">
+                        <div class="form-group">
+                            @*<label>Ürün ID :</label>*@
+                            @*<input type="text" class="form-control" name="urunAd" />*@
+                            @Html.HiddenFor(m => m.urunID, new { @class = "form-control" })
+                        </div>
                         <div class="form-group">
                             <label>Ürün Adı :</label>
                             @*<input type="text" class="form-control" name="urunAd" />*@

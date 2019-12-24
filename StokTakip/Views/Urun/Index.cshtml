@@ -7,8 +7,9 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
+
 <a style="margin-bottom:20px;" href="/Urun/UrunEkle/" class="btn btn-primary">Yeni Ürün Ekle</a>
-<table class="table table-striped">
+<table id="tblUrun" class="table table-striped">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -42,3 +43,10 @@
 
     </tbody>
 </table>
+
+@*<script src="~/Content/DataTables/datatables.min.js"></script>
+<link href="~/Content/DataTables/css/fixedColumns.bootstrap4.css" rel="stylesheet" />*@
+
+@*<script>
+    $('#tblUrun').DataTable();
+</script>*@

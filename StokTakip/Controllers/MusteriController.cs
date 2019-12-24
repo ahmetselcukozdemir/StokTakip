@@ -11,11 +11,16 @@ namespace StokTakip.Controllers
         // GET: Musteri
 
         MvcDbStokEntities db = new MvcDbStokEntities();
-        public ActionResult Index()
+        public ActionResult Index(string p)
         {
-            var values = db.Musteriler.ToList();
-
-            return View(values);
+            //var values = db.Musteriler.ToList();
+            var values = from d in db.Musteriler select d;
+            if(!string.IsNullOrEmpty(p))
+            {
+                values = values.Where(m => m.musteriAd.Contains(p));
+            }
+            return View(values.ToList());
+            //return View(values);
         }
 
         [HttpGet]
@@ -39,25 +44,45 @@ namespace StokTakip.Controllers
         public ActionResult Sil(int id)
         {
             var customer = db.Musteriler.Find(id);
+            if(customer!=null)
             db.Musteriler.Remove(customer);
             db.SaveChanges();
             return RedirectToAction("Index");
 
 
         }
-       public ActionResult MusteriGetir(int id)
+        public ActionResult MusteriGetir(int id)
         {
-            var customer = db.Musteriler.Find(id);
-            return View("MusteriGetir",customer);
+            try
+            {
+                var customer = db.Musteriler.Find(id);
+                return View("MusteriGetir", customer);
+            }
+            catch (Exception x)
+            {
+
+                throw x;
+            }
+         
 
         }
         public ActionResult Guncelle(Musteriler customer)
         {
-            var m = db.Musteriler.Find(customer.musteriID);
-            m.musteriAd = customer.musteriAd;
-            m.musteriSoyad = customer.musteriSoyad;
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                var m = db.Musteriler.Find(customer.musteriID);
+                if (m != null)
+                m.musteriAd = customer.musteriAd;
+                m.musteriSoyad = customer.musteriSoyad;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+
 
         }
     }

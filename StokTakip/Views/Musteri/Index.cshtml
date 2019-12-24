@@ -7,7 +7,20 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-<a style="margin-bottom:20px;" href="/Musteri/YeniMusteri/" class="btn btn-primary">Yeni Müşteri Ekle</a>
+
+@using (Html.BeginForm("Index", "Musteri", FormMethod.Get))
+{
+    <div class="row">
+        <div class="col-md-6" style="float:left;">
+            <p>
+                Aranacak Müşteri Adı : @Html.TextBox("p")
+                <input type="submit" value="Ara" />
+            </p>
+        </div>
+        <div class="col-md-6" style="float:right;"><a style="margin-bottom:20px;" href="/Musteri/YeniMusteri/" class="btn btn-primary">Yeni Müşteri Ekle</a></div>
+    </div>
+}
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -15,8 +28,8 @@
             <th scope="col">Adı</th>
             <th scope="col"> Soyadı</th>
             <th scope="col"> Sil</th>
-             <th scope="col"> Düzenle</th>
-     
+            <th scope="col"> Düzenle</th>
+
         </tr>
     </thead>
     <tbody>
@@ -26,13 +39,14 @@
                 <th scope="row">@customer.musteriID</th>
                 <td>@customer.musteriAd</td>
                 <td>@customer.musteriSoyad</td>
-                <td><a href="/Musteri/Sil/@customer.musteriID" class="btn btn-danger">Sil</a></td>
+                @*<td><a href="/Musteri/Sil/@customer.musteriID" class="btn btn-danger">Sil</a></td>*@
+                <td>@Html.ActionLink("Sil", "Sil", new { id = customer.musteriID }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten silmek istiyor musunuz ?')" })</td>
                 <td><a href="/Musteri/MusteriGetir/@customer.musteriID" class="btn btn-success">Güncelle</a></td>
+              
             </tr>
-        }
+            }
 
 
 
     </tbody>
 </table>
-
